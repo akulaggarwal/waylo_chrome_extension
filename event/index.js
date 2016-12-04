@@ -1,3 +1,4 @@
+//Changes icon of extension upon page load
 chrome.tabs.onUpdated.addListener( (tabId, changeInfo, tab) => {
   const url = tab.url.slice(0,19);
 
