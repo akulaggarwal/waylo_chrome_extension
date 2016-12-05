@@ -1,7 +1,6 @@
 window.onload = () => {
 
-
-  const searchButton = document.getElementById('search-button');
+  
 
   document.getElementById('search-button').addEventListener('click', () => {
     const destination = document.getElementById('package-destination') || document.getElementById('hotel-destination');
