@@ -43,7 +43,7 @@ function assessUserData(destination, checkIn, checkOut, guests, adults, children
   const getOldStore = new Promise(
     function(resolve, reject) {
       console.log('inside promise');
-      chrome.storage.sync.get("expediaStorage", function(obj) {
+      chrome.storage.sync.get("expediaStorage", (obj) => {
         resolve(obj);
       })
     }
