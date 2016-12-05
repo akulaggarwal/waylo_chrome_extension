@@ -10,7 +10,6 @@ class App extends Component {
 
   componentWillMount() {
     chrome.storage.sync.get("expediaStorage", (obj) => {
-      console.log(obj);
 
       const searches = obj.expediaStorage.map( obj => {
         return (
@@ -23,7 +22,6 @@ class App extends Component {
             children={obj.children} />
         )
       })
-      console.log("after mapping: ", searches);
       this.setState({searches: searches || this.state.searches})
 
       // this.setState({

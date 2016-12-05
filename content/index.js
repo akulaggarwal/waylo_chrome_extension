@@ -1,29 +1,25 @@
 window.onload = () => {
-  console.log('FINISHED LOADING');
 
-  // const form = document.getElementsByTagName('form');
 
-  // document.addEventListener('click', (ev) => {
-    const searchButton = document.getElementById('search-button');
+  const searchButton = document.getElementById('search-button');
 
-    document.getElementById('search-button').addEventListener('click', () => {
-      console.log("BUTTON PUSHED");
-      const destination = document.getElementById('package-destination') || document.getElementById('hotel-destination');
-      const checkInDate = document.getElementById('package-checkin') || document.getElementById('hotel-checkin');
-      const checkoutDate = document.getElementById('package-checkout') || document.getElementById('hotel-checkout');
-      const guests = document.getElementById('package-1-guests') || document.getElementById('hotel-1-guests');
-      const adults = document.getElementById('package-1-adults') || document.getElementById('hotel-1-adults');
-      const children = document.getElementById('package-1-children') || document.getElementById('hotel-1-children');
+  document.getElementById('search-button').addEventListener('click', () => {
+    const destination = document.getElementById('package-destination') || document.getElementById('hotel-destination');
+    const checkInDate = document.getElementById('package-checkin') || document.getElementById('hotel-checkin');
+    const checkoutDate = document.getElementById('package-checkout') || document.getElementById('hotel-checkout');
+    const guests = document.getElementById('package-1-guests') || document.getElementById('hotel-1-guests');
+    const adults = document.getElementById('package-1-adults') || document.getElementById('hotel-1-adults');
+    const children = document.getElementById('package-1-children') || document.getElementById('hotel-1-children');
 
-      if (destination.value && checkInDate.value && checkoutDate.value){
-        assessUserData(destination, checkInDate, checkoutDate, guests, adults, children);
-      }
-    })
+    if (destination.value && checkInDate.value && checkoutDate.value){
+      assessUserData(destination, checkInDate, checkoutDate, guests, adults, children);
+    }
+  })
 
 }
 
 function assessUserData(destination, checkIn, checkOut, guests, adults, children) {
-  console.log(arguments);
+  (arguments);
   let childs = "0";
   let grownups;
 
@@ -37,12 +33,10 @@ function assessUserData(destination, checkIn, checkOut, guests, adults, children
     grownups = adults.value;
   }
 
-  console.log(childs, grownups);
   // debugger;
 
   const getOldStore = new Promise(
     function(resolve, reject) {
-      console.log('inside promise');
       chrome.storage.sync.get("expediaStorage", (obj) => {
         resolve(obj);
       })
@@ -51,7 +45,7 @@ function assessUserData(destination, checkIn, checkOut, guests, adults, children
 
   getOldStore.then(
     function(obj){
-      debugger;
+      // debugger;
 
       const arr = obj.expediaStorage;
       arr.push({
@@ -62,7 +56,7 @@ function assessUserData(destination, checkIn, checkOut, guests, adults, children
         checkOut: checkOut.value
       })
 
-      debugger;
+      // debugger;
 
       chrome.storage.sync.set({
         "expediaStorage": arr
