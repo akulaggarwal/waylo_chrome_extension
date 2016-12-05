@@ -16,7 +16,13 @@ chrome.tabs.onUpdated.addListener( (tabId, changeInfo, tab) => {
 
 console.log('now set to blank array');
 chrome.storage.sync.set({
-  "expediaStorage": []
+  "expediaStorage": [{
+    destination: 'atlanta',
+    adults: "1",
+    children: "0",
+    checkIn: 'eh',
+    checkOut: "meh"
+  }]
 })
 
 // chrome.storage.sync.remove("expediaStorage");

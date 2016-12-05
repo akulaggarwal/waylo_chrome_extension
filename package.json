@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/akulaggarwal/waylo_chrome_extension#readme",
   "dependencies": {
+    "axios": "^0.15.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
