@@ -3,21 +3,20 @@ import React, {Component} from 'react';
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      lastSearch: "User hasn't searched Expedia for Hotels yet"
+    }
   }
 
   componentWillMount() {
-    chrome.storage.sync.set({
-      "expediaStorage": []
-    })
 
-
-    // chrome.storage.sync.remove("expediaStorage");
   }
 
   render() {
     return (
       <div>
-        Hello World
+        {this.state.lastSearch}
       </div>
     );
   }

@@ -38,7 +38,7 @@ function assessUserData(destination, checkIn, checkOut, guests, adults, children
   }
 
   console.log(childs, grownups);
-  debugger;
+  // debugger;
 
   const getOldStore = new Promise(
     function(resolve, reject) {
