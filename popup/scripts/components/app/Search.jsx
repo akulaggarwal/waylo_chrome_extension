@@ -11,7 +11,12 @@ class Search extends Component {
   }
 
   componentWillMount() {
-    axios.get(`http://api.wunderground.com/api/e783d83d8d1417dc/geolookup/conditions/q/CA/${this.props.destination}.json`)
+    const destination = this.props.destination;
+    const city = destination.slice(0, destination.indexOf(","))
+    const state = destination.slice(destination.indexOf(",") + 2);
+    console.log('stripped city: ', city);
+    console.log('stripped state: ', state);
+    axios.get(`http://api.wunderground.com/api/e783d83d8d1417dc/geolookup/conditions/q/${state}/${city}.json`)
       .then( resp => {
         console.log('weather: ', resp.data.current_observation);
         this.setState({

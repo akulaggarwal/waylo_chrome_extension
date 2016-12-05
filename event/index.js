@@ -17,7 +17,7 @@ chrome.tabs.onUpdated.addListener( (tabId, changeInfo, tab) => {
 console.log('now set to blank array');
 chrome.storage.sync.set({
   "expediaStorage": [{
-    destination: 'atlanta',
+    destination: 'atlanta, GA',
     adults: "1",
     children: "0",
     checkIn: 'eh',
