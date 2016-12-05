@@ -17,19 +17,19 @@ window.onload = () => {
 
 
       // console.log(destination);
-      storeUserData(destination, checkInDate, checkoutDate, guests, adults, children);
+      if (destination.value && checkInDate.value && checkoutDate.value){
+        assessUserData(destination, checkInDate, checkoutDate, guests, adults, children);
+      }
     })
 
   // })
-
-
 }
 
-function storeUserData(destination, checkIn, checkOut, guests, adults, children) {
+function assessUserData(destination, checkIn, checkOut, guests, adults, children) {
   console.log(arguments);
-  let childs = 0;
+  let childs = "0";
   let grownups;
-  
+
   if (children) {
     childs = children.value;
   }
@@ -41,4 +41,62 @@ function storeUserData(destination, checkIn, checkOut, guests, adults, children)
   }
 
   console.log(childs, grownups);
+  debugger;
+  //check if anything in local storage
+  const checkStore = new Promise(
+    function(resolve, reject) {
+      console.log('inside promise');
+      chrome.storage.sync.get("expediaStorage", function(obj) {
+
+        //if extension used for first time
+        debugger;
+        // if (!obj.expediaStorage){
+        //   debugger;
+        //   reject(obj);
+        // }
+
+        resolve(obj);
+      })
+    }
+  )
+
+  checkStore.then(
+    function(obj){
+      debugger;
+      //check for repeat search
+
+      const arr = obj.expediaStorage;
+      arr.push({
+        destination: destination.value,
+        adults: grownups,
+        children: childs,
+        checkIn: checkIn.value,
+        checkOut: checkOut.value
+      })
+      debugger;
+
+      chrome.storage.sync.set({
+        "expediaStorage": arr
+      })
+
+      // setChromeStorage(arr, 'expediaStorage');
+    }
+  )
+  // .catch(createExpediaStorage)
+  //
+  // function createExpediaStorage() {
+  //   debugger;
+  //   const passInVal = {
+  //     destination: destination.value,
+  //     adults: grownups,
+  //     children: childs,
+  //     checkIn: checkIn.value,
+  //     checkOut: checkOut.value
+  //   };
+  //
+  //   setChromeStorage([passInVal], "expediaStorage")
+  //   setChromeStorage(passInVal, "last")
+  // }
+
+
 }

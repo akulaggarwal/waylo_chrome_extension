@@ -5,6 +5,15 @@ class App extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    chrome.storage.sync.set({
+      "expediaStorage": []
+    })
+
+
+    // chrome.storage.sync.remove("expediaStorage");
+  }
+
   render() {
     return (
       <div>
