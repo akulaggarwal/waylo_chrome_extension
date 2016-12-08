@@ -1,11 +1,9 @@
 window.onload = () => {
 
-  
-
   document.getElementById('search-button').addEventListener('click', () => {
     const destination = document.getElementById('package-destination') || document.getElementById('hotel-destination');
-    const checkInDate = document.getElementById('package-checkin') || document.getElementById('hotel-checkin');
-    const checkoutDate = document.getElementById('package-checkout') || document.getElementById('hotel-checkout');
+    const checkInDate = document.getElementById('package-checkin') || document.getElementById('hotel-checkin') || document.getElementById('package-departing');
+    const checkoutDate = document.getElementById('package-checkout') || document.getElementById('hotel-checkout') || document.getElementById('package-returning');
     const guests = document.getElementById('package-1-guests') || document.getElementById('hotel-1-guests');
     const adults = document.getElementById('package-1-adults') || document.getElementById('hotel-1-adults');
     const children = document.getElementById('package-1-children') || document.getElementById('hotel-1-children');

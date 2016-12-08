@@ -2,7 +2,7 @@
 chrome.tabs.onUpdated.addListener( (tabId, changeInfo, tab) => {
   const url = tab.url.slice(0,19);
 
-  if (url !== "https://www.expedia") {
+  if (url !== "https://www.expedia" && changeInfo.status === 'complete') {
     chrome.browserAction.setIcon({
       path: "./icon4.png"
     })

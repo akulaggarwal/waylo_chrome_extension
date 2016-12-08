@@ -17,6 +17,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.expedia.com/*"],
+      "run_at": "document_end",
       "css": [],
       "js": ["content.js"]
     }

@@ -1,2 +1,4 @@
 build
 node_modules
+content/index_experimental.js
+event/index_experimental.js
